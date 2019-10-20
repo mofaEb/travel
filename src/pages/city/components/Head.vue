@@ -24,6 +24,7 @@ export default {
     color: #ffffff
     background-color: $bgColor
     font-size: .32rem
+    // margin: 0
     .header-back
       position: absolute
       width: .64rem
