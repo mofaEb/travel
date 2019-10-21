@@ -1,12 +1,28 @@
 <template>
   <div class="search">
-    <input class="search-input" type="text" placeholder="输入城市名或标签">
+    <input class="search-input" v-model="keyword" placeholder="输入城市名或标签">
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CitySearch'
+  name: 'CitySearch',
+  data () {
+    return {
+      keyword: ''
+    }
+  },
+  // methods: {
+  //   handleKeywordInput () {
+  //     this.$emit("getKeyword", keyword)
+  //   }
+  // },
+  watch: {
+    keyword (keyword) {
+      this.$emit('getKeyword', keyword)
+      // console.log(keyword)
+    }
+  }
 }
 </script>
 

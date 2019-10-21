@@ -1,8 +1,13 @@
 <template>
   <div>
     <city-header></city-header>
-    <city-search></city-search>
-    <city-list :letter='letter' :cities="cities" :hotCities="hotCities"></city-list>
+    <city-search @getKeyword="handleKeywordChange"></city-search>
+    <city-list
+      :letter='letter'
+      :cities="cities"
+      :hotCities="hotCities"
+      :keyword="keyword"
+    ></city-list>
     <city-alphabet
       :cities="cities"
       @change="handleLetterChange"
@@ -22,7 +27,8 @@ export default {
     return {
       hotCities: [],
       cities: {},
-      letter: ''
+      letter: '',
+      keyword: ''
     }
   },
   components: {
@@ -44,6 +50,10 @@ export default {
     handleLetterChange (letter) {
       this.letter = letter
       // console.log(letter)
+    },
+    handleKeywordChange (keyword) {
+      this.keyword = keyword
+      // console.log(keyword)
     }
   },
   mounted () {

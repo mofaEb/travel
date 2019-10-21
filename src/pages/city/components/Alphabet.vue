@@ -58,7 +58,7 @@ export default {
           if (index >= 0 && index <= 21) {
             this.$emit('change', this.letters[index])
           }
-          console.log(index)
+          // console.log(index)
         }, 10)
       }
     },
