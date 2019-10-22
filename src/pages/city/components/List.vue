@@ -5,14 +5,18 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="btn-list">
           <div class="btn-wrapper">
-            <div class="btn">北京</div>
+            <div class="btn">{{this.$store.state.city}}</div>
           </div>
         </div>
       </div>
       <div class="area" v-show="show">
         <div class="title border-topbottom">热门城市</div>
         <div class="btn-list">
-          <div class="btn-wrapper" v-for='hotCity in hotCities' :key='hotCity.id'>
+          <div class="btn-wrapper"
+            v-for='hotCity in hotCities'
+            :key='hotCity.id'
+            @click="handleCityClick(hotCity.name)"
+          >
             <div class="btn">{{ hotCity.name }}</div>
           </div>
         </div>
@@ -23,7 +27,11 @@
         :ref="alphabet">
         <div class="title border-topbottom" v-show="show">{{ alphabet }}</div>
         <div class="item-list">
-          <div class="item border-bottom" v-for="cityName in list" :key='cityName.id'>
+          <div class="item border-bottom"
+            v-for="cityName in list"
+            :key='cityName.id'
+            @click="handleCityClick(cityName.name)"
+          >
             {{ cityName | keyFilter(dbWord) }}
           </div>
         </div>
@@ -73,6 +81,10 @@ export default {
           }
         })
       }
+    },
+    handleCityClick (city) {
+      this.$store.commit('changeCity', city)
+      this.$router.push('/')
     }
   },
   data () {
