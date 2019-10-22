@@ -69,6 +69,7 @@ export default {
     .header-abs-back
       font-size: .2rem
    .header-fixed
+    z-index: 2
     position: fixed
     top: 0
     left: 0
